@@ -341,7 +341,7 @@ def get_tokenizer(model_type, use_fast=False):
         model_type = cache_scibert(model_type)
 
     if version.parse(trans_version) >= version.parse("4.0.0"):
-        tokenizer = AutoTokenizer.from_pretrained(model_type, use_fast=True)
+        tokenizer = AutoTokenizer.from_pretrained(model_type, use_fast=use_fast)
     else:
         assert not use_fast, "Fast tokenizer is not available for version < 4.0.0"
         tokenizer = AutoTokenizer.from_pretrained(model_type)
