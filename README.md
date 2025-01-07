@@ -1,3 +1,69 @@
+# Korean BertScore
+
+한국어 텍스트 생성 평가를 위한 BERTScore 구현체입니다.
+
+## 주요 기능
+
+- 한국어에 최적화된 사전학습 모델 지원
+  - klue/bert-base
+  - kykim/electra-kor-base
+  - monologg/koelectra-base-v3-discriminator  
+  - beomi/KcELECTRA-base
+  - 기타 한국어 모델 지원
+
+
+
+
+## 사용 방법
+
+```python
+from bert_score import score
+
+# 한국어 텍스트 평가
+refs = ["이것은 참조 문장입니다."]
+cands = ["이것은 생성된 문장입니다."] 
+
+P, R, F1 = score(cands, refs, lang="ko")
+```
+
+
+
+## Best Layer 
+
+다양한 한국어/다국어 모델의 최적 레이어와 AI Hub [다국어 번역 품질 평가 데이터](https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=&topMenu=&aihubDataSe=data&dataSetSn=71646) 기준 DA(Direct Assessment) Pearson  상관계수입니다.
+
+| 모델 | 유형 | Best Layer | Pearson 상관계수 |
+|:-----|:----:|:----------:|:----------------:|
+| google-bert/bert-base-uncased | English | 12 | 0.504 |
+| google-bert/bert-base-multilingual-cased | Multilingual | 9 | 0.542 |
+| kykim/bert-kor-base | Korean | 8 |<ins> 0.653 </ins>|
+| snunlp/KR-BERT-char16424 | Korean | 9 | 0.640 |
+| kakaobank/kf-deberta-base | Korean | 8 | 0.649 |
+| klue/bert-base | Korean | 8 | 0.611 |
+| klue/roberta-small | Korean | 5 | 0.616 |
+| klue/roberta-base | Korean | 9 | 0.635 |
+| klue/roberta-large | Korean | 20 | **0.663** |
+| lassl/bert-ko-base | Korean | 8 | 0.616 |
+| beomi/kcbert-base | Korean | 11 | 0.564 |
+| snunlp/KR-FinBert-SC | Korean | 7 | 0.609 |
+| kykim/electra-kor-base | Korean | 10 | 0.639 |
+| beomi/KcELECTRA-base | Korean | 11 | 0.637 |
+| monologg/koelectra-base-v3-discriminator | Korean | 11 | 0.609 |
+| monologg/distilkobert | Korean | 2 | 0.574 |
+| FacebookAI/xlm-roberta-large | Multilingual | 22 | 0.591 |
+| FacebookAI/xlm-roberta-base | Multilingual | 11 | 0.509 |
+| Alibaba-NLP/gte-multilingual-mlm-base | Multilingual | 8 | 0.414 |
+| BLEU (`tokenizer=ko-mecab`) | N/A | N/A | 0.388 |
+
+> 참고: 상관계수는 AI Hub 다국어 번역 품질 평가 데이터셋의 DA(Direct Assessment) 점수 기준이며, -1에서 1 사이의 값을 가지고 1에 가까울수록 인간 평가와의 상관관계가 높음을 의미합니다. 
+
+## Visualization
+![Visualization](./asset/visualize.png)
+
+
+
+---
+
 # BERTScore
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-red.svg)](#python)
 [![arxiv](https://img.shields.io/badge/arXiv-1904.09675-b31b1b.svg)](https://arxiv.org/abs/1904.09675)
