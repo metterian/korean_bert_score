@@ -11,7 +11,12 @@
   - beomi/KcELECTRA-base
   - 기타 한국어 모델 지원
 
-
+### 설치 방법
+```bash
+git clone https://github.com/metterian/korean_bert_score
+cd korean_bert_score
+pip install -e .
+```
 
 
 ### 사용 방법
