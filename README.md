@@ -2,7 +2,7 @@
 
 한국어 텍스트 생성 평가를 위한 BERTScore 구현체입니다.
 
-## 주요 기능
+### 주요 기능
 
 - 한국어에 최적화된 사전학습 모델 지원
   - klue/bert-base
@@ -14,7 +14,7 @@
 
 
 
-## 사용 방법
+### 사용 방법
 
 ```python
 from bert_score import score
@@ -28,7 +28,7 @@ P, R, F1 = score(cands, refs, lang="ko")
 
 
 
-## Best Layer 
+### Best Layer 
 
 다양한 한국어/다국어 모델의 최적 레이어와 AI Hub [다국어 번역 품질 평가 데이터](https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=&topMenu=&aihubDataSe=data&dataSetSn=71646) 기준 DA(Direct Assessment) Pearson  상관계수입니다.
 
@@ -57,7 +57,7 @@ P, R, F1 = score(cands, refs, lang="ko")
 
 > 참고: 상관계수는 AI Hub 다국어 번역 품질 평가 데이터셋의 DA(Direct Assessment) 점수 기준이며, -1에서 1 사이의 값을 가지고 1에 가까울수록 인간 평가와의 상관관계가 높음을 의미합니다. 
 
-## Visualization
+### Visualization
 ![Visualization](./asset/visualize.png)
 
 
