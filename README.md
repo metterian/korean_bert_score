@@ -71,14 +71,6 @@ P, R, F1 = score(cands, refs, lang="ko") # kykim/bert-kor-base
 
 
 ### Reference
-```
-@misc{korean_bert_score,
-  title = {Korean BERTScore},
-  author = {Seungjun Lee},
-  year = {2025},
-  url={https://github.com/metterian/korean_bert_score},
-}
-```
 
 
 ```
@@ -88,6 +80,14 @@ P, R, F1 = score(cands, refs, lang="ko") # kykim/bert-kor-base
   booktitle={International Conference on Learning Representations},
   year={2020},
   url={https://openreview.net/forum?id=SkeHuCVFDr}
+}
+```
+```
+@misc{korean_bert_score,
+  title = {Korean BERTScore},
+  author = {Seungjun Lee},
+  year = {2025},
+  url={https://github.com/metterian/korean_bert_score},
 }
 ```
 
