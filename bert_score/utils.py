@@ -33,6 +33,7 @@ lang2model.update(
         "zh": "bert-base-chinese",
         "tr": "dbmdz/bert-base-turkish-cased",
         "en-sci": "allenai/scibert_scivocab_uncased",
+        "ko":  "kykim/bert-kor-base"
     }
 )
 
@@ -182,6 +183,20 @@ model2layers = {
     "microsoft/mdeberta-v3-base": 10,  # 0.6778713684091584
     "microsoft/deberta-v3-large": 12,  # 0.6927693082293821
     "khalidalt/DeBERTa-v3-large-mnli": 18,  # 0.7428756686018376
+    "kykim/bert-kor-base": 8,  # 0.6525059442150242
+    "klue/bert-base": 8,  # 0.610519310980925
+    "klue/roberta-small": 5,  # 0.6155987371688525
+    "klue/roberta-base": 9,  # 0.6350758600987101
+    "klue/roberta-large": 20,  # 0.6632967999039878
+    "kakaobank/kf-deberta-base": 8,  # 0.6491671887483449
+    "beomi/kcbert-base": 11,  # 0.5642019923282193
+    "lassl/bert-ko-base": 8,  # 0.6157721449042898
+    "snunlp/KR-BERT-char16424": 9,  # 0.6396357376097898
+    "snunlp/KR-FinBert-SC": 7,  # 0.6092057202033887
+    "monologg/distilkobert": 2,  # 0.5736902466031919
+    "kykim/electra-kor-base": 10,  # 0.6393825654827927
+    "monologg/koelectra-base-v3-discriminator": 11,  # 0.6090487861932803
+    "beomi/KcELECTRA-base": 11,  # 0.6367047702247479
 }
 
 
@@ -326,11 +341,10 @@ def get_tokenizer(model_type, use_fast=False):
         model_type = cache_scibert(model_type)
 
     if version.parse(trans_version) >= version.parse("4.0.0"):
-        tokenizer = AutoTokenizer.from_pretrained(model_type, use_fast=use_fast)
+        tokenizer = AutoTokenizer.from_pretrained(model_type, use_fast=True)
     else:
         assert not use_fast, "Fast tokenizer is not available for version < 4.0.0"
         tokenizer = AutoTokenizer.from_pretrained(model_type)
-
     return tokenizer
 
 
