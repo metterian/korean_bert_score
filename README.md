@@ -35,6 +35,9 @@ P, R, F1 = score(cands, refs, lang="ko")
 
 ### Best Layer 
 
+[한국어 모델 레이어 튜닝 실험 ](https://docs.google.com/spreadsheets/d/1HaUDvkciILgBad92ODaLE4Y5uv3r4_KBSkmBluew9xY/edit?gid=323233743#gid=323233743)
+
+
 다양한 한국어/다국어 모델의 최적 레이어와 AI Hub [다국어 번역 품질 평가 데이터](https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=&topMenu=&aihubDataSe=data&dataSetSn=71646) 기준 DA(Direct Assessment) Pearson  상관계수입니다.
 
 | 모델 | 유형 | Best Layer | Pearson 상관계수 |
@@ -66,9 +69,6 @@ P, R, F1 = score(cands, refs, lang="ko")
 ![Visualization](./asset/visualize.png)
 
 
-## Experiment
-
-[한국어 모델 레이어 튜닝 실험 ](https://docs.google.com/spreadsheets/d/1HaUDvkciILgBad92ODaLE4Y5uv3r4_KBSkmBluew9xY/edit?gid=323233743#gid=323233743)
 
 ---
 
