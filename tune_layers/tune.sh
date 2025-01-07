@@ -1,2 +1,7 @@
-bash download_data.sh
-python tune_layers.py -m bert-base-uncased roberta-base albert-base-v2
+# bash download_data.sh
+python tune_layers.py  -m kykim/electra-kor-base    --lang_pairs zhko jako 
+
+    # Alibaba-NLP/gte-multilingual-mlm-base \
+    # monologg/distilkobert \
+
+

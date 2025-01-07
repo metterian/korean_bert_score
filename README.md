@@ -66,6 +66,9 @@ P, R, F1 = score(cands, refs, lang="ko")
 ![Visualization](./asset/visualize.png)
 
 
+## Experiment
+
+[한국어 모델 레이어 튜닝 실험 ](https://docs.google.com/spreadsheets/d/1HaUDvkciILgBad92ODaLE4Y5uv3r4_KBSkmBluew9xY/edit?gid=323233743#gid=323233743)
 
 ---
 
