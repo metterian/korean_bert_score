@@ -2,9 +2,6 @@ import argparse
 import os
 import re
 from collections import defaultdict
-import json
-
-
 
 import numpy as np
 import torch
@@ -56,47 +53,6 @@ def get_wmt16_seg_to_bert_score(lang_pair, scorer, data_folder="wmt16", batch_si
     return scores, gold_scores, max_length
 
 
-def get_aihub_data(lang_pair, data_folder="../data"):
-    """AIHub 번역품질평가 데이터를 읽어오는 함수"""
-    gold_scores = []
-    all_refs = []
-    all_hyps = []
-    
-    # Training 데이터와 Validation 데이터 모두 처리
-    # for data_type in ["Training", "Validation"]:
-    for data_type in [ "Validation"]:
-        data_path = os.path.join(
-            data_folder,
-            "008.다국어 번역 품질 평가 데이터/3.개방데이터/1.데이터",
-            data_type,
-            "02.라벨링데이터/extracted"
-        )
-        
-        # JSON 파일들을 순회
-        for json_file in os.listdir(data_path):
-            if json_file.startswith(f"{lang_pair.lower()}") and json_file.endswith('.json'):
-                with open(os.path.join(data_path, json_file), 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                    for item in data['data']:
-                        gold_scores.append(item['score_da_final'])
-                        all_refs.append(item['ht'])
-                        all_hyps.append(item['mt'])
-    
-    return gold_scores, all_refs, all_hyps
-
-
-def get_aihub_bert_score(lang_pair, scorer, data_folder="../data", batch_size=64):
-    """AIHub 데이터에 대한 BERT Score를 계산하는 함수"""
-    gold_scores, refs, cands = get_aihub_data(lang_pair, data_folder=data_folder)
-    if scorer.idf:
-        scorer.compute_idf(refs)
-    scores = scorer.score(cands, refs, verbose=True, batch_size=batch_size)
-    scores = list(scores)
-    max_length = scorer._tokenizer.max_len_single_sentence
-
-    return scores, gold_scores, max_length
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--data", default="wmt16", help="path to wmt16 data")
@@ -129,18 +85,9 @@ def main():
         )
         results = defaultdict(dict)
         for lang_pair in tqdm(args.lang_pairs):
-            print(f"lang_pair: {lang_pair}")
-            # AIHub 데이터인 경우
-            if lang_pair in ["enko", "jako", "zhko"]:
-                scores, gold_scores, max_length = get_aihub_bert_score(
-                    lang_pair, scorer, batch_size=args.batch_size
-                )
-            # WMT16 데이터인 경우
-            else:
-                scores, gold_scores, max_length = get_wmt16_seg_to_bert_score(
-                    lang_pair, scorer, batch_size=args.batch_size
-                )
-            
+            scores, gold_scores, max_length = get_wmt16_seg_to_bert_score(
+                lang_pair, scorer, batch_size=args.batch_size
+            )
             for i, score in enumerate(scores[2]):
                 results[lang_pair + " " + str(i)]["%s %s" % (network, "F")] = pearsonr(
                     score, gold_scores
