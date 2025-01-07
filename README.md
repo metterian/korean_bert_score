@@ -28,7 +28,7 @@ from bert_score import score
 refs = ["이것은 참조 문장입니다."]
 cands = ["이것은 생성된 문장입니다."] 
 
-P, R, F1 = score(cands, refs, lang="ko")
+P, R, F1 = score(cands, refs, lang="ko") # kykim/bert-kor-base	
 ```
 
 
