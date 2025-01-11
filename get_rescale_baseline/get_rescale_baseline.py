@@ -7,7 +7,6 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import sacrebleu
 import torch
 from tqdm.auto import tqdm
 
@@ -20,8 +19,11 @@ def get_data(lang="en"):
         file_path = "data/news.2017.en.shuffled.deduped"
     elif lang == "zh":
         file_path = "data/paracrawl/crawl_chinese.txt"
+    elif lang == "ko":
+        file_path = "data/aihub_source_sentences.txt"
     else:
         file_path = f"data/paracrawl/rand_{lang}.txt"
+        
 
     with open(file_path, "r") as f:
         lines = []
