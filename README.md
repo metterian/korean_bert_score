@@ -25,8 +25,8 @@ pip install -e .
 from bert_score import score
 
 # 한국어 텍스트 평가
-refs = ["이것은 참조 문장입니다."]
-cands = ["이것은 생성된 문장입니다."] 
+refs = ["내일 비가 올 것 같아."]
+cands = ["내일 비가 쏟아질 듯하다."] 
 
 P, R, F1 = score(cands, refs, lang="ko") # kykim/bert-kor-base	
 ```
@@ -68,7 +68,11 @@ P, R, F1 = score(cands, refs, lang="ko") # kykim/bert-kor-base
 ### Visualization
 ![Visualization](./asset/visualize.png)
 
+```bash
+# 시각화 예시 코드
+bert-score-show   --lang ko -r  "내일 비가 올 것 같아."  -c "내일 비가 쏟아질 듯하다."  --rescale_with_baseline
 
+```
 
 ### Reference
 
