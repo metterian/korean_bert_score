@@ -4,12 +4,14 @@
 
 ### 주요 기능
 
-- 한국어에 최적화된 사전학습 모델 지원
+- 한국어에 최적화된 사전학습 모델 지원 
   - klue/bert-base
   - kykim/electra-kor-base
   - monologg/koelectra-base-v3-discriminator  
   - beomi/KcELECTRA-base
   - 기타 한국어 모델 지원
+
+- [[지원 모델](https://github.com/metterian/korean_bert_score/blob/e9b7bd87ab0bef97fe47b8d7fb65286a6035d0f3/bert_score/utils.py#L186)]
 
 ### 설치 방법
 ```bash
